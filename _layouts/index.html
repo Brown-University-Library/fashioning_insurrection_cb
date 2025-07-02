@@ -1,0 +1,19 @@
+{% include header.html %}
+        <nav>
+            <ul>
+                {% for section in site.data.config-nav.casesnav %}
+                <li tabindex=0 >
+                    <img src="{{ section.img }}" alt="{{ section.imgalt }}">
+                    <span>{{ section.title }} <time>({{ section.time }})</time>
+                        </span>
+                        <div class="archbox"></div>
+                    <ul>
+                        {% for case in section.subfolderitems %}
+                        <li><a href="{{ case.url }}">{{ case.page }}</a></li>
+                        {% endfor %}
+                    </ul>
+                </li>
+                {% endfor %}
+            </ul>
+        </nav>
+{% include footer.html %}

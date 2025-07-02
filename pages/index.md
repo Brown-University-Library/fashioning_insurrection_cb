@@ -1,6 +1,7 @@
 ---
-layout: home-infographic
+layout: index
 title: Home
+disablecasenav: True
 permalink: /
 ---
 

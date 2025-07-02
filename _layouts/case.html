@@ -1,0 +1,43 @@
+---
+# base layout for other item display_template layouts
+# adds breadcrumbs and title at top; citation box, rights box, and browse buttons at bottom
+layout: default
+# item-meta adds rich meta markup to the page on production build
+item-meta: false
+---
+    <main class="case">
+        <section id="casedescription">
+            <div class="sticky">
+                <details>
+                    <summary>All Cases</summary>
+                    <ul>
+                        {% for section in site.data.config-nav.casesnav %}
+                        <li>
+                            <details>
+                                <summary>{{ section.title }}</summary>
+                                <ul>
+                                    {% for case in section.subfolderitems %}
+                                    <a href="{{ case.url }}"><li>{{ case.page }}</li></a>
+                                    {% endfor %}
+                                </ul>
+                            </details>
+                        </li>
+                        {% endfor %}
+                    </ul>
+                </details>
+            <h2>{{ page.title }}</h2>
+            <p>
+                {{ content }}
+            </p>
+            </div>
+        </section>
+        <section>
+            <a href="../item"><img src="../img/algeriancostume.jpg" alt="a greek costume"></a>
+            <a href="../item"><img src="../img/indiancostume.jpg" alt="a greek costume"></a>
+            <a href="../item"><img src="../img/supernaturalindianwarrior.jpg" alt="a greek costume"></a>
+        {%- assign items = site.data[site.metadata] | where_exp: 'item','item.objectid' -%}
+        {% for item in items %}
+            <a href="{{ item.url }}"><img src="{{ item.item_image }}" alt="{{ item.item_image_alt_text }}"></a>
+        {% endfor %}
+        </section>
+    </main>
