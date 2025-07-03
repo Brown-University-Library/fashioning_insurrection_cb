@@ -2,7 +2,7 @@
 title: Navigating Characters and Costumes of the Greek War of Independence
 layout: case
 permalink: /greece/characters-and-costumes
-item-tag: greece-chars
+case-id: "1"
 ---
 
 When the first Greek insurrections against the Ottoman

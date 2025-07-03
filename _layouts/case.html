@@ -8,23 +8,7 @@ item-meta: false
     <main class="case">
         <section id="casedescription">
             <div class="sticky">
-                <details>
-                    <summary>All Cases</summary>
-                    <ul>
-                        {% for section in site.data.config-nav.casesnav %}
-                        <li>
-                            <details>
-                                <summary>{{ section.title }}</summary>
-                                <ul>
-                                    {% for case in section.subfolderitems %}
-                                    <a href="{{ case.url }}"><li>{{ case.page }}</li></a>
-                                    {% endfor %}
-                                </ul>
-                            </details>
-                        </li>
-                        {% endfor %}
-                    </ul>
-                </details>
+            {% include item/leftnav.html %}
             <h2>{{ page.title }}</h2>
             <p>
                 {{ content }}
@@ -32,12 +16,9 @@ item-meta: false
             </div>
         </section>
         <section>
-            <a href="../item"><img src="../img/algeriancostume.jpg" alt="a greek costume"></a>
-            <a href="../item"><img src="../img/indiancostume.jpg" alt="a greek costume"></a>
-            <a href="../item"><img src="../img/supernaturalindianwarrior.jpg" alt="a greek costume"></a>
-        {%- assign items = site.data[site.metadata] | where_exp: 'item','item.objectid' -%}
+        {%- assign items = site.data[site.metadata] | where_exp: 'item',"item.objectid and item.caseid==page.case-id" -%}
         {% for item in items %}
-            <a href="{{ item.url }}"><img src="{{ item.item_image }}" alt="{{ item.item_image_alt_text }}"></a>
+            <a href="/items/{{ item.objectid }}"><img src="{{ item.itemimage }}" alt="{{ item.image_alt_text }}"></a>
         {% endfor %}
         </section>
     </main>

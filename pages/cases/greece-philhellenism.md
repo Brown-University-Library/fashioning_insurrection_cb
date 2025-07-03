@@ -2,7 +2,7 @@
 title: "Philhellenism: Americans in Support of the Greek Revolution and in Greek Costume"
 layout: case
 permalink: /greece/philhellenism
-item-tag: greece-phil
+case-id: "2"
 ---
 
 Costume permeated the international discourse

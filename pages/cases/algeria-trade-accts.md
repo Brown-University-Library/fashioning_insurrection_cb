@@ -2,7 +2,7 @@
 title: Costumes and Customs Documented Through Barbary Captivity and Trade Accounts
 layout: case
 permalink: /algeria/costumes-and-customs
-item-tag: algeria-costumes
+case-id: "3"
 ---
 
 The visual histories of Algeria leading up to the

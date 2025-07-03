@@ -2,7 +2,7 @@
 title: Orientalist Legacies of Algeria in the American Civil War
 layout: case
 permalink: /algeria/orientalist-legacies
-item-tag: algeria-orientalism
+case-id: "5"
 ---
 
 Approximately 30,000 soldiers fought as Zouaves in the

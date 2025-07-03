@@ -5,6 +5,8 @@
 }
 body {
     overflow-x:hidden;
+    --linkcolor:yellow;
+    --activelinkcolor:orange;
     --accentcolor:#efcb86;
     --headerfonts:Superclarendon, 'Bookman Old Style', 'URW Bookman', 'URW Bookman L', 'Georgia Pro', Georgia, serif;
     --tallbgimggradient:
@@ -29,7 +31,7 @@ body {
     height:100vh;
 }
 a {
-    color: yellow;
+    color: var(--linkcolor);
 }
 .topnavbar {
     font-family:var(--headerfonts);
@@ -312,7 +314,7 @@ main {
             font-size:1.2em;
             position:relative;
             flex:1;
-            text-align: center;
+            text-wrap: balance;
             padding: 1em;
             text-transform: uppercase;
             &:nth-child(1) {
@@ -391,24 +393,28 @@ main {
                 font-size:2em;
                 padding-block-end: 1em;
             }
-            &>.sticky>details {
-                margin-block-end:1em;
-                & ul {
-                    list-style: none;
-                    /* padding-inline-start: 1.5em; */
-                    & li {
-                        padding-block: 0.4em;
-                        padding-inline: 1em;
-                }
-            }
         }
+    }
+}
+.leftnav {
+    margin-block-end:1em;
+    & ul {
+        list-style: none;
+        /* padding-inline-start: 1.5em; */
+        & li {
+            padding-block: 0.4em;
+            padding-inline: 1em;
+        }
+    }
+    & a.active {
+        color: var(--activelinkcolor);
     }
 }
 .sticky {
     position:sticky;
     top:1em;
 }
-.item {
+main.item {
     display: flex;
     flex-direction:row;
     flex-wrap:nowrap;

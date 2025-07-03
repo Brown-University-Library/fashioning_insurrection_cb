@@ -2,7 +2,7 @@
 title: "Aftermath and Adaptation: Abd el-Kader to the Zouaves and Turcos in Popular Print"
 layout: case
 permalink: /algeria/aftermath-and-adaptation
-item-tag: algeria-after
+case-id: "4"
 ---
 
 Costume became a powerful tool in the civilizing

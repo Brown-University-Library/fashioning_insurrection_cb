@@ -2,7 +2,7 @@
 title: 1857 Uprising in Press and Popular Sentiment
 layout: case
 permalink: /india/press-and-popular-sentiment
-item-tag: india-press
+case-id: "7"
 ---
 
 The British East India Company (BEIC) overwhelmingly

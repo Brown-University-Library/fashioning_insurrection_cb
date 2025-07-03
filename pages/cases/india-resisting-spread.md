@@ -2,7 +2,7 @@
 title: Resisting the Spread of the British East India Company across the Subcontinent
 layout: case
 permalink: /india/resisting-the-spread-of-the-britishi-east-india-company
-item-tag: india-spread
+case-id: "6"
 ---
 
 By the late eighteenth century, the faltering Mughal
