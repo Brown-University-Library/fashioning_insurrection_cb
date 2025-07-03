@@ -283,6 +283,7 @@ main {
                     max-height:0px;
                     /* z-index:201; */
                     padding:0em;
+                    text-wrap:balance;
                     &>a {
                         text-decoration:none;
                         &:hover{
