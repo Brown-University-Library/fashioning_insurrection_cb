@@ -1,0 +1,19 @@
+                <details class="leftnav">
+                    <summary>All Cases</summary>
+                    <ul>
+                        {% for section in site.data.config-nav.casesnav %}
+                        <li>
+                            {% assign filteredsection = section.subfolderitems | where: 'url', page.url %}
+                            <details{% if filteredsection.size > 0 %} open{% endif %}>
+                                <summary>{{ section.title }}</summary>
+                                <ul>
+                                    {% for case in section.subfolderitems %}
+                                    {% assign url_parts = page.url | split: '/' %}
+                                    <li><a href="{{ case.url }}"{% if case.url == page.url %} class="active"{% endif %}>{{ case.page }}</a></li>
+                                    {% endfor %}
+                                </ul>
+                            </details>
+                        </li>
+                        {% endfor %}
+                    </ul>
+                </details>
