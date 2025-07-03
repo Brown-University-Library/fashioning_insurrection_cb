@@ -210,6 +210,8 @@ main {
             }
                 text-decoration:none;
                 display:flex;
+                flex-direction:column;
+                justify-content:flex-end;
                 height:100%;
                 & span {
                     padding-inline: 10%;
@@ -223,7 +225,7 @@ main {
                         font-size:0.5em;
                     }
                 }
-                &:focus-visible {
+                &:focus-visible>span {
                     text-decoration:underline;
                 }
                 &>.archbox {
@@ -236,6 +238,7 @@ main {
                     background-size: cover;
                     -webkit-mask-size: cover;
                     mask-size: cover;
+                    pointer-events:none;
                 }
             &:nth-child(1)>ul {
                 background:var(--archcolor);
@@ -258,8 +261,10 @@ main {
                 list-style:none;
                 &>li {
                     max-height:0px;
+                    opacity:0;
                     padding:0em;
                     text-wrap:balance;
+                    transition: all 0.5s;
                     &>a {
                         text-decoration:none;
                         &:hover{
@@ -275,6 +280,7 @@ main {
                 &>li{
                     max-height:300px;
                     padding:1em;
+                    opacity:1;
                 }
             }
         }
