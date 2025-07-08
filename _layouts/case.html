@@ -6,16 +6,14 @@ layout: default
 item-meta: false
 ---
     <main class="case">
-        <section id="casedescription">
-            <div class="sticky">
-            {% include item/leftnav.html %}
-            <h2>{{ page.title }}</h2>
+    {% include item/leftnav.html %}
+    <section>
+        <h2>{{ page.title }}</h2>
+        <div id="casedescription">
             <p>
                 {{ content }}
             </p>
-            </div>
-        </section>
-        <section>
+        </div>
         {%- assign items = site.data[site.metadata] | where_exp: 'item',"item.objectid and item.caseid==page.case-id" -%}
         {% for item in items %}
             <a href="/items/{{ item.objectid }}"><img src="{{ item.itemimage }}" alt="{{ item.image_alt_text }}"></a>
