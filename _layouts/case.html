@@ -16,7 +16,7 @@ item-meta: false
         </div>
         {%- assign items = site.data[site.metadata] | where_exp: 'item',"item.objectid and item.caseid==page.case-id" -%}
         {% for item in items %}
-            <a href="/items/{{ item.objectid }}"><img src="{{ item.itemimage }}" alt="{{ item.image_alt_text }}"></a>
+            <a href="{{ item.objectid | prepend: '/items/' | relative_url }}"><img src="{{ item.itemimage | relative_url }}" alt="{{ item.image_alt_text }}"></a>
         {% endfor %}
         </section>
     </main>

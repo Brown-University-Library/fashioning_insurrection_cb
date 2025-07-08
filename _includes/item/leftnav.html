@@ -9,7 +9,7 @@
                                 {% for case in section.subfolderitems %}
                                 {% assign url_parts = page.url | split: '/' %}
                                 <li>
-                                    <a href="{{ case.url }}"{% if case.url == page.url %} class="active"{% endif %}>{{ case.page }}</a>
+                                    <a href="{{ case.url | relative_url}}"{% if case.url == page.url %} class="active"{% endif %}>{{ case.page }}</a>
                                 </li>
                                 {% endfor %}
                             </ul>
