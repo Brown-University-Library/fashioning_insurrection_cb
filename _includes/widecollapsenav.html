@@ -1,0 +1,16 @@
+
+    {% if page.disablecasenav != true %}
+    <nav class="casesnav">
+        <ul>
+            {% for item in site.data.config-nav.casesnav %}
+            <li tabindex="0">{% if item.short-title %}{{ item.short-title }}{% else %}{{ item.title }}{% endif %}
+                <ul class="dropdown">
+                    {% for entry in item.subfolderitems %}
+                    <li><a href="{{ entry.url }}">{{ entry.page }}</a></li>
+                    {% endfor %}
+                </ul>
+            </li>
+            {% endfor %}
+        </ul>
+    </nav>
+    {% endif %}
