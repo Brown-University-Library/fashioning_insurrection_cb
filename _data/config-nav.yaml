@@ -6,20 +6,20 @@ casesnav:
     time: 1821-29
     subfolderitems:
       - page: Navigating Characters and Costumes of the Greek War of Independence
-        url: /greece/characters-and-costumes
+        url: /greece/characters-and-costumes.html
       - page: "Philhellenism: Americans in Support of the Greek Revolution and in Greek Costume"
-        url: /greece/philhellenism
+        url: /greece/philhellenism.html
   - title: Algerian Revolution
     img: /img/algeriancostume.jpg
     imgalt: algerian costume
     time: 1830-48
     subfolderitems:
       - page: Costumes and Customs Documented Through Barbary Captivity and Trade Accounts
-        url: /algeria/costumes-and-customs 
+        url: /algeria/costumes-and-customs.html
       - page: "Aftermath and Adaptation: Abd el-Kader to the Zouaves and Turcos in Popular Print"
-        url: /algeria/aftermath-and-adaptation
+        url: /algeria/aftermath-and-adaptation.html
       - page: Orientalist Legacies of Algeria in the American Civil War
-        url: orientalist-legacies
+        url: /algeria/orientalist-legacies.html
   - short-title: Indian Rebellion
     title: Indian Rebellion of 1857
     time: 1857
@@ -27,6 +27,6 @@ casesnav:
     imgalt: indian costume
     subfolderitems:
       - page: Resisting the Spread of the British East India Company across the Subcontinent
-        url: /india/resisting-the-spread-of-the-british-east-india-company
+        url: /india/resisting-the-spread-of-the-british-east-india-company.html
       - page: 1857 Uprising in Press and Popular Sentiment
-        url: /india/press-and-popular-sentiment
+        url: /india/press-and-popular-sentiment.html
