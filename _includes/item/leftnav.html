@@ -1,19 +1,19 @@
-                <nav class="leftnav">
-                    <ul class="sticky">
-                        {% for section in site.data.config-nav.casesnav %}
-                        <li>
-                            {% assign filteredsection = section.subfolderitems | where: 'url', page.url %}
-                            {% assign splittitle = section.title | split: ' ' %}
-                            <div style="background-color:rgb(var(--{{ splittitle[0] | downcase }}color))">{{ section.title }}</div>
-                            <ul>
-                                {% for case in section.subfolderitems %}
-                                {% assign url_parts = page.url | split: '/' %}
-                                <li>
-                                    <a href="{{ case.url | relative_url}}"{% if case.url == page.url %} class="active"{% endif %}>{{ case.page }}</a>
-                                </li>
-                                {% endfor %}
-                            </ul>
+        <nav class="leftnav">
+            <ul class="sticky">
+                {% for section in site.data.config-nav.casesnav %}
+                <li>
+                    {% assign filteredsection = section.subfolderitems | where: 'url', page.url %}
+                    {% assign splittitle = section.title | split: ' ' %}
+                    <div style="background-color:rgb(var(--{{ splittitle[0] | downcase }}color))">{{ section.title }}</div>
+                    <ul style="background-color:rgb(var(--{{ splittitle[0] | downcase }}color))">
+                        {% for case in section.subfolderitems %}
+                        {% assign fullurl = page.url | append: '/' %}
+                        <li{% if case.url == fullurl %} style="background-color:rgb(var(--{{ splittitle[0] | downcase }}color))"{% endif %}>
+                            <a href="{{ case.url | relative_url }}"{% if case.url == fullurl %} class="active"{% endif %}>{{ case.page }}</a>
                         </li>
                         {% endfor %}
                     </ul>
-                </nav>
+                </li>
+                {% endfor %}
+            </ul>
+        </nav>
