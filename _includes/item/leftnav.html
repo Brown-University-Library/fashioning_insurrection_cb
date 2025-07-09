@@ -4,11 +4,11 @@
                 <li>
                     {% assign filteredsection = section.subfolderitems | where: 'url', page.url %}
                     {% assign splittitle = section.title | split: ' ' %}
-                    <div style="background-color:rgb(var(--{{ splittitle[0] | downcase }}color))">{{ section.title }}</div>
+                    <div style="background-color:rgb(var(--{{ splittitle[0] | downcase }}color))" tabindex=0>{{ section.title }}</div>
                     <ul style="background-color:rgb(var(--{{ splittitle[0] | downcase }}color))">
                         {% for case in section.subfolderitems %}
                         {% assign fullurl = page.url | append: '/' %}
-                        <li{% if case.url == fullurl %} style="background-color:rgb(var(--{{ splittitle[0] | downcase }}color))"{% endif %}>
+                        <li{% if case.url == fullurl %} style="background-color:rgb(var(--dk{{ splittitle[0] | downcase }}color))"{% endif %}>
                             <a href="{{ case.url | relative_url }}"{% if case.url == fullurl %} class="active"{% endif %}>{{ case.page }}</a>
                         </li>
                         {% endfor %}
@@ -17,3 +17,17 @@
                 {% endfor %}
             </ul>
         </nav>
+        <script>
+            document.querySelector("a.active").parentElement.parentElement.parentElement.classList.add("open")
+            navheaders = document.querySelectorAll(".leftnav>ul>li>div")
+            for (var i=0;i<navheaders.length;i++) {
+              navheaders[i].addEventListener("click", e => {
+                  lmnt = e.target;
+                  navsections = lmnt.parentElement.parentElement.children;
+                  for (var i=0;i<navsections.length;i++) {
+                    navsections[i].classList.remove("open");
+                  }
+                  lmnt.parentElement.classList.add("open");
+              });
+            }
+        </script>

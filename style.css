@@ -12,11 +12,11 @@ body {
     --headerfonts:Superclarendon, 'Bookman Old Style', 'URW Bookman', 'URW Bookman L', 'Georgia Pro', Georgia, serif;
     --archcolor:black;
     --greekcolor:66, 83, 113;
-    --dkgreekcolor:66, 83, 113;
+    --dkgreekcolor:32, 44, 65;
     --algeriancolor:135, 133, 129;
-    --dkalgeriancolor:135, 133, 129;
+    --dkalgeriancolor:73,67,55;
     --indiancolor:125, 50, 35;
-    --dkindiancolor:125, 50, 35;
+    --dkindiancolor:69, 34, 20;
     --darkerblue:#072441;
     --lighterseablue:#287ab1;
     --red:#d12229;
@@ -33,6 +33,7 @@ body {
 a {
     color: var(--linkcolor);
     text-decoration-thickness: 0.045em;
+    pointer-events: all;
 }
 
 .topnavbar {
@@ -431,15 +432,38 @@ main.case {
                 padding-block: 1em;
                 position:relative;
                 &:before {
-                    content:"";
+                    content:"\2BC8";
                     position:absolute;
-                    inset:0.8em;
-                    bottom:0;
-                    border-bottom:var(--navborder);
+                    right:1em;
+                    transform:translateY(-2px);
+                    transition: all 0.2s;
                 }
             }
             & ul {
-                padding-block:0.6em;
+                pointer-events:none;
+                visibility:hidden;
+                overflow:hidden;
+                max-height:0;
+                transition: all 0.5s;
+                position: relative;
+                &:before {
+                    content:"";
+                    position:absolute;
+                    inset:0.8em;
+                    top:0;
+                    border-top:var(--navborder);
+                }
+            }
+            &.open,&:has(:focus-visible) {
+                &>div:before {
+                    rotate:90deg;
+                }
+                &>ul{
+                    max-height:400px;
+                    visibility:visible;
+                    padding-block:0.6em;
+                    transition: all 0.2s;
+                }
             }
         }
     }
