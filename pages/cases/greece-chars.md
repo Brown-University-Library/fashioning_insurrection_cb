@@ -1,7 +1,7 @@
 ---
 title: Navigating Characters and Costumes of the Greek War of Independence
 layout: case
-permalink: /greece/characters-and-costumes
+permalink: /greece/characters-and-costumes/
 case-id: "1"
 ---
 

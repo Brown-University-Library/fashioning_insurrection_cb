@@ -1,7 +1,7 @@
 ---
 title: 1857 Uprising in Press and Popular Sentiment
 layout: case
-permalink: /india/press-and-popular-sentiment
+permalink: /india/press-and-popular-sentiment/
 case-id: "7"
 ---
 

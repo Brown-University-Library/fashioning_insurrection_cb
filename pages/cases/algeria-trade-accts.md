@@ -1,7 +1,7 @@
 ---
 title: Costumes and Customs Documented Through Barbary Captivity and Trade Accounts
 layout: case
-permalink: /algeria/costumes-and-customs
+permalink: /algeria/costumes-and-customs/
 case-id: "3"
 ---
 

@@ -1,7 +1,7 @@
 ---
 title: Resisting the Spread of the British East India Company across the Subcontinent
 layout: case
-permalink: /india/resisting-the-spread-of-the-british-east-india-company
+permalink: /india/resisting-the-spread-of-the-british-east-india-company/
 case-id: "6"
 ---
 
