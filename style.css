@@ -12,8 +12,14 @@ body {
     --headerfonts:Superclarendon, 'Bookman Old Style', 'URW Bookman', 'URW Bookman L', 'Georgia Pro', Georgia, serif;
     --archcolor:black;
     --greekcolor:66, 83, 113;
-    --algeriancolor:127, 122, 113;
-    --indiancolor:112, 75, 52;
+    --dkgreekcolor:66, 83, 113;
+    --algeriancolor:135, 133, 129;
+    --dkalgeriancolor:135, 133, 129;
+    --indiancolor:125, 50, 35;
+    --dkindiancolor:125, 50, 35;
+    --darkerblue:#072441;
+    --lighterseablue:#287ab1;
+    --red:#d12229;
     background: black;
     color: white;
     font-family:Inter, Roboto, 'Helvetica Neue', 'Arial Nova', 'Nimbus Sans', Arial, sans-serif;
@@ -227,7 +233,7 @@ main.home>nav {
             object-position:center top;
             object-fit: cover;
             width: 100%;
-            filter:brightness(50%);
+            filter:brightness(80%);
             z-index:-1;
         }
         & span {
@@ -406,30 +412,34 @@ main.case {
 
 .leftnav {
     flex-basis: 300px;
-    background-color:#333;
     height:100%;
     --navborder: 1px solid var(--accentcolor);
-    /* border-right:var(--navborder); */
+    & a {
+        text-decoration:none;
+        color:white;
+    }
     &>ul {
         list-style: none;
         & li {
             & li, & div {
-                padding: 0.5em 0.8em;
+                padding: 0.6em 0.8em;
             }
             & li {
-            }
-            & li:first-of-type {
-                margin-block-start: 0.8em;
-            }
-            & li:last-of-type {
-                margin-block-end: 0.8em;
+                padding-inline-start:1.5em
             }
             & div {
-                background:grey;
                 padding-block: 1em;
+                position:relative;
+                &:before {
+                    content:"";
+                    position:absolute;
+                    inset:0.8em;
+                    bottom:0;
+                    border-bottom:var(--navborder);
+                }
             }
             & ul {
-                list-style:none;
+                padding-block:0.6em;
             }
         }
     }
