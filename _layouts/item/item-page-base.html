@@ -5,9 +5,22 @@ layout: default
 # item-meta adds rich meta markup to the page on production build
 item-meta: false
 ---
-    <main class="item">
-        <section id="itemdescription">
-            {% include item/leftnav.html %}
+    <main>
+        {% include item/leftnav.html %}
+        {%- assign spliturl = page.url | split: '/' -%}
+        {%- assign section = spliturl[1] -%}
+        {%- case section -%}
+            {%- when "greece" -%}
+                {%- assign color="greek" -%}
+            {%- when "algeria" -%}
+                {%- assign color="algerian" -%}
+            {%- when "india" -%}
+                {%- assign color="indian" -%}
+        {%- endcase -%}
+        <section id="item" style="background-color:rgb(var(--dk{{color}}color));">
+            <a href="#zoom" class="imgwrapper">
+                <img src="{{ base }}{{ page.itemimage }}" alt="{{ page.image_alt_text | default: page.description | default: page.title | escape }}" class="img-fluid">
+            </a>
             <h2>{{ page.title }}</h2>
             <p>
                 {{ page.description }}

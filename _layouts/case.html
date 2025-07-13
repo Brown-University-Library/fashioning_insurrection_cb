@@ -7,18 +7,18 @@ item-meta: false
 ---
     <main>
     {%- include item/leftnav.html -%}
-    {%- assign spliturl = page.url | split: '/' -%}
-    {%- assign section = spliturl[1] -%}
-    {%- case section -%}
-        {%- when "greece" -%}
-            {%- assign color="greek" -%}
-        {%- when "algeria" -%}
-            {%- assign color="algerian" -%}
-        {%- when "india" -%}
-            {%- assign color="indian" -%}
-    {%- endcase -%}
-    <section style="background-color:rgb(var(--dk{{color}}color));">
-        <h2 style="background-color:rgb(var(--dk{{color}}color));">{{ page.title }}</h2>
+    {%- include baseurl.html -%}
+    {% for section in site.hierarchy %}
+        {% for case in section.children %}
+            {% assign parentcase = page.case-id | string | strip %}
+            {% assign caseid = case.caseid | string | strip %}
+            {% if parentcase == caseid %}
+                {% assign bg = section.dkcolor %}
+            {% endif %}
+        {% endfor %}
+    {% endfor %}
+    <section id="case" style="background-color: {{ bg }} ;">
+        <h2 style="background-color: {{ bg }};">{{ page.title }}</h2>
         <div id="casedescription">
             <p>
                 {{ content }}
