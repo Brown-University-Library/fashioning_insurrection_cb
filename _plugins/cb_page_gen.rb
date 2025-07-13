@@ -131,7 +131,8 @@ module CollectionBuilderPageGenerator
 
           # create clean filename with Jekyll Slugify pretty mode
           # this ensures safe filenames, but may cause unintended issues with links if objectid are not well formed
-          record['base_filename'] = slugify(record[name], mode: "pretty").to_s
+          slug = slugify(record[name], mode: "pretty").to_s
+          record["base_filename"] = "index"
           puts color_text("Notice cb_page_gen: record '#{index}' in '#{data_file}', '#{record[name]}' is being sanitized to create a valid filename. This may cause issues with links generated on other pages. Please check the naming convention used in '#{name}' field.", :yellow) if record['base_filename'] != record[name]
 
           # Provide index number for page object
@@ -145,7 +146,7 @@ module CollectionBuilderPageGenerator
               end
             end
           end
-          dir = record["parenturl"]
+          dir = record["parenturl"] + slug
           record["url"] = dir
 
           # Find next item 
