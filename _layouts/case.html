@@ -5,7 +5,7 @@ layout: default
 # item-meta adds rich meta markup to the page on production build
 item-meta: false
 ---
-    <main class="case">
+    <main>
     {%- include item/leftnav.html -%}
     {%- assign spliturl = page.url | split: '/' -%}
     {%- assign section = spliturl[1] -%}
@@ -26,7 +26,7 @@ item-meta: false
         </div>
         {%- assign items = site.data[site.metadata] | where_exp: 'item',"item.objectid and item.caseid==page.case-id" -%}
         {% for item in items %}
-            <a href="{{ item.objectid | prepend: '/items/' | append: '.html' | relative_url }}"><img src="{{ item.itemimage | relative_url }}" alt="{{ item.image_alt_text }}"></a>
+            <a href="{{ item.objectid }}/"><img src="{{ base }}{{ item.itemimage }}" alt="{{ item.image_alt_text }}"></a>
         {% endfor %}
         </section>
     </main>

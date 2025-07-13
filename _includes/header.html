@@ -4,17 +4,18 @@
     <meta charset="UTF-8">
     <meta http-equiv="Content-Type" content="text/html;charset=UTF-8"> 
     <title>Fashioning Insurrection</title>
-    <link rel="stylesheet" href="{{ "/style.css" | relative_url }}" media="all">
+    {%- include baseurl.html -%}
+    <link rel="stylesheet" href="{{ base }}/style.css" media="all">
 </head>
 <body>
 <header>
     <div class="topnavbar">
         <h1>
-            <a href="{{ "/" | relative_url }}">Fashioning Insurrection</a>
+            <a href="{{ base }}/">Fashioning Insurrection</a>
         </h1>
         <section id="about">
             <div class="modal">
-                <img src="{{ "/img/supernaturalindianwarrior.jpg" | relative_url}}" alt="an archer dressed in Indian costume fighting British soldiers in red coats."/>
+                <img src="{{ base }}/img/supernaturalindianwarrior.jpg" alt="an archer dressed in Indian costume fighting British soldiers in red coats."/>
                 <div class="text">
                     <h2>About the exhibit</h2>
                     <p>
@@ -59,7 +60,7 @@
         </section>
         <section id="americans">
             <div class="modal">
-                <img src="{{ "/img/supernaturalindianwarrior.jpg" | relative_url }}" alt="an archer dressed in Indian costume fighting British soldiers in red coats."/>
+                <img src="{{ base }}/img/supernaturalindianwarrior.jpg" alt="an archer dressed in Indian costume fighting British soldiers in red coats."/>
                 <div class="text">
                     <h2>America's Perspective</h2>
                     <p>

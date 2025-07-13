@@ -12,8 +12,7 @@ item-meta: false
             <p>
                 {{ page.description }}
             </p>
+            <div id="zoom" class="modal">
+                <img src="{{ base }}{{ page.itemimage }}" alt="{{ page.image_alt_text | default: page.description | default: page.title | escape }}" />
         </section>
-        <div class="imgwrapper">
-            <img src="{{ page.itemimage | relative_url }}" alt="{{ page.image_alt_text | default: page.description | default: page.title | escape }}" class="img-fluid">
-        </div>
     </main>

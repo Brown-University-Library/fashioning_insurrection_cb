@@ -1,4 +1,5 @@
 {% include header.html %}
+{% include baseurl.html %}
     <main class="home">
         <nav>
             <ul>
@@ -9,8 +10,8 @@
                         </span>
                         <div class="archbox"></div>
                     <ul>
-                        {% for case in section.subfolderitems %}
-                        <li><a href="{{ case.url | relative_url }}">{{ case.page }}</a></li>
+                        {% for case in section.children %}
+                        <li><a href="{{ base }}{{ case.url }}">{{ case.page }}</a></li>
                         {% endfor %}
                     </ul>
                 </li>

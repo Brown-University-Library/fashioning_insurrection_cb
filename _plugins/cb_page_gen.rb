@@ -137,6 +137,17 @@ module CollectionBuilderPageGenerator
           # Provide index number for page object
           record['index_number'] = index 
           
+          hierarchy = site.config['hierarchy']
+          for parent in hierarchy
+            for child in parent["children"]
+              if String(child["caseid"]) == String(record["caseid"])
+                record["parenturl"] = child["url"]
+              end
+            end
+          end
+          dir = record["parenturl"]
+          record["url"] = dir
+
           # Find next item 
           if index == records.size - 1
             next_item = records[0][name]
