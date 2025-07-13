@@ -7,17 +7,16 @@ item-meta: false
 ---
     <main>
         {% include item/leftnav.html %}
-        {%- assign spliturl = page.url | split: '/' -%}
-        {%- assign section = spliturl[1] -%}
-        {%- case section -%}
-            {%- when "greece" -%}
-                {%- assign color="greek" -%}
-            {%- when "algeria" -%}
-                {%- assign color="algerian" -%}
-            {%- when "india" -%}
-                {%- assign color="indian" -%}
-        {%- endcase -%}
-        <section id="item" style="background-color:rgb(var(--dk{{color}}color));">
+        {% for section in site.hierarchy %}
+            {% for case in section.children %}
+                {% assign parentcase = page.caseid | string | strip %}
+                {% assign caseid = case.caseid | string | strip %}
+                {% if parentcase == caseid %}
+                    {% assign bg = section.dkcolor %}
+                {% endif %}
+            {% endfor %}
+        {% endfor %}
+        <section id="item" style="background-color:{{ bg }}">
             <a href="#zoom" class="imgwrapper">
                 <img src="{{ base }}{{ page.itemimage }}" alt="{{ page.image_alt_text | default: page.description | default: page.title | escape }}" class="img-fluid">
             </a>
