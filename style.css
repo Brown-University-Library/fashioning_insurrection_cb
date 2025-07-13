@@ -385,6 +385,7 @@ section#item {
             }
             & li {
                 padding-inline-start:1.5em
+                position: relative;
             }
             & div {
                 padding-block: 1em;
@@ -427,6 +428,7 @@ section#item {
     }
     & li li:has(a.active) {
         background-color: var(--activelinkbgcolor);
+        position:relative;
         /*border-right:-1px solid black;
         border-top: var(--navborder);
         border-bottom: var(--navborder);
@@ -434,6 +436,12 @@ section#item {
         & a.active {
             text-decoration: none;
             color: var(--activelinkcolor);
+        }
+        &:before {
+            content: "";
+            position: absolute;
+            border-inline-start: 5px solid var(--accentcolor);
+            inset: 0;
         }
     }
 }
