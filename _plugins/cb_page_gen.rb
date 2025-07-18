@@ -138,33 +138,33 @@ module CollectionBuilderPageGenerator
           # Provide index number for page object
           record['index_number'] = index 
           
+          if index == records.size - 1
+            next_item = records[0]
+          else
+            next_item = records[index + 1]
+          end
+          if index == 0
+            previous_item = records[records.size - 1]
+          else
+            previous_item = records[index -1]
+          end
+
           hierarchy = site.config['hierarchy']
           for parent in hierarchy
             for child in parent["children"]
-              if String(child["caseid"]) == String(record["caseid"])
+              case String(child["caseid"])
+              when String(record["caseid"])
                 record["parenturl"] = child["url"]
+              when String(next_item["caseid"])
+                record['next_item'] = child['url'] + slugify(next_item[name], mode: "pretty").to_s
+              when String(previous_item["caseid"])
+                record['previous_item'] = child['url'] + slugify(previous_item[name], mode: "pretty").to_s
               end
             end
           end
           dir = record["parenturl"] + slug
           record["url"] = dir
 
-          # Find next item 
-          if index == records.size - 1
-            next_item = records[0][name]
-          else
-            next_item = records[index + 1][name]
-          end
-          record['next_item'] = "/" + dir + "/" + slugify(next_item, mode: "pretty").to_s + "." + extension.to_s
-          # Find previous item
-          if index == 0
-            previous_item = records[records.size - 1][name]
-          else
-            previous_item = records[index -1][name]
-          end
-          record['previous_item'] = "/" + dir + "/" + slugify(previous_item, mode: "pretty").to_s + "." + extension.to_s
-          
-          # Add layout value from display_template or the default
           if record[display_template]
             record['layout'] = template_location + record[display_template].strip
             # if not valid layout, fall back to template default

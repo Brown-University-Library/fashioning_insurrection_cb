@@ -18,13 +18,26 @@ item-meta: false
         {% endfor %}
         <section id="item" style="background-color:{{ bg }}">
             <a href="#zoom" class="imgwrapper">
-                <img src="{{ base }}{{ page.itemimage }}" alt="{{ page.image_alt_text | default: page.description | default: page.title | escape }}" class="img-fluid">
+                <img
+                  src="{{ base }}{{ page.itemimage }}"
+                  alt="{{ page.image_alt_text | default: page.description | default: page.title | escape }}"
+                  class="img-fluid"
+                >
             </a>
-            <h2>{{ page.title }}</h2>
-            <p>
-                {{ page.description }}
-            </p>
-            <div id="zoom" class="modal">
-                <img src="{{ base }}{{ page.itemimage }}" alt="{{ page.image_alt_text | default: page.description | default: page.title | escape }}" />
+            <details id="itemdescription">
+                <summary>
+                    <h2>{{ page.title }}</h2>
+                </summary>
+                <p>
+                    {{ page.description }}
+                </p>
+            </details>
+            <a href="{{ base }}{{ page.next_item }}">next</a>
+            <a href="{{ base }}{{ page.previous_item }}">previous</a>
+        <div id="zoom" class="modal">
+                <img
+                  src="{{ base }}{{ page.itemimage }}"
+                  alt="{{ page.image_alt_text | default: page.description | default: page.title | escape }}"
+                />
         </section>
     </main>
