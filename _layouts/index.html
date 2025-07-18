@@ -1,22 +1,32 @@
 {% include header.html %}
 {% include baseurl.html %}
-    <main class="home">
-        <nav>
-            <ul>
-                {% for section in site.hierarchy %}
-                <li tabindex=0 >
-                    <img src="{{ base }}{{ section.img }}" alt="{{ section.imgalt }}">
-                    <span style="background-color:{{ section.transparentcolor }}">{{ section.title }} <time>({{ section.time }})</time>
-                        </span>
-                        <div class="archbox" style=" --arch-mask: url('{{ section.arch }}');"></div>
-                    <ul>
-                        {% for case in section.children %}
-                        <li><a href="{{ base }}{{ case.url }}">{{ case.page }}</a></li>
-                        {% endfor %}
-                    </ul>
-                </li>
-                {% endfor %}
-            </ul>
-        </nav>
-    </main>
+<main class="home">
+  <nav>
+    <ul>
+      {% for section in site.hierarchy %}
+      <li tabindex=0 >
+        <img
+            src="{{ base }}{{ section.img }}"
+            alt="{{ section.imgalt }}"
+            >
+            <hgroup class="sectiontitle"
+                style="background-color:{{ section.transparentcolor }}"
+                >
+                <h2>{{ section.title }}</h2>
+                <time>({{ section.time }})</time>
+            </hgroup>
+        <div
+          class="archbox"
+          style=" --arch-mask: url('{{ section.arch }}');"
+        ></div>
+        <ul>
+          {% for case in section.children %}
+          <li><a href="{{ base }}{{ case.url }}">{{ case.page }}</a></li>
+          {% endfor %}
+        </ul>
+      </li>
+      {% endfor %}
+    </ul>
+  </nav>
+</main>
 {% include footer.html %}

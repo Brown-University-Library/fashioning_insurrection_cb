@@ -9,14 +9,16 @@ body {
     --activelinkcolor:white;
     --activelinkbgcolor:black;
     --accentcolor:#efcb86;
-    --headerfonts:Superclarendon, 'Bookman Old Style', 'URW Bookman', 'URW Bookman L', 'Georgia Pro', Georgia, serif;
+    --headerfonts:Eyja, Superclarendon, 'Bookman Old Style', 'URW Bookman', 'URW Bookman L', 'Georgia Pro', Georgia, serif;
     --archcolor:black;
     --darkerblue:#072441;
     --lighterseablue:#287ab1;
     --red:#d12229;
     background: black;
     color: white;
-    font-family:Inter, Roboto, 'Helvetica Neue', 'Arial Nova', 'Nimbus Sans', Arial, sans-serif;
+    font-family: "freight-sans-pro", Inter, Roboto, 'Helvetica Neue', 'Arial Nova', 'Nimbus Sans', Arial, sans-serif;
+    font-size: 1.1em;
+    line-height:1.3em;
     box-sizing:border-box;
     display:flex;
     flex-flow: column;
@@ -30,9 +32,13 @@ a {
     pointer-events: all;
 }
 
+hgroup,h1,h2,h3 {
+    font-family: var(--headerfonts);
+    line-height:1;
+}
+
 .topnavbar {
-    font-family:var(--headerfonts);
-    text-transform: uppercase;
+    /* text-transform: uppercase; */
     width: 100vw;
     display:flex;
     flex-flow: row wrap;
@@ -44,8 +50,7 @@ a {
         color: white;
         text-align: center;
     }
-    & h1 {
-        font-size:2.5em;
+    & hgroup {
         display:block;
         font-weight: 100;
         margin-inline-end: 1em;
@@ -114,7 +119,6 @@ header , footer {
         }
         & p {
             text-transform: initial;
-            font-family: sans-serif;
             min-width:20em;
             line-height: 1.3em;
             & br {
@@ -262,7 +266,6 @@ main.home>nav {
 }
 
 .casesnav {
-    font-family: var(--headerfonts);
     &>ul {
         display:flex;
         flex-flow: row nowrap;
