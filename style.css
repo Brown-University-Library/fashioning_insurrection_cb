@@ -5,6 +5,7 @@
 }
 
 body {
+    --whitebg:#eee;
     --linkcolor:#ffdeaa;
     --activelinkcolor:white;
     --activelinkbgcolor:black;
@@ -16,7 +17,7 @@ body {
     --red:#d12229;
     --mainbgcol: black;
     --footerbgcol:black;
-    --headerbgcol: #eee;
+    --headerbgcol: var(--whitebg);
     --headercol: var(--red);
     --headersubscol: var(--darkerblue);
     --headerborder: var(--accentcolor) solid 10px;
@@ -49,7 +50,7 @@ hgroup,h1,h2,h3 {
     display:flex;
     flex-flow: row wrap;
     gap: 0.3em;
-    padding: 1.5em 1.5em 2em;
+    padding: 1.9em 1.5em 2em;
     justify-content: space-between;
     align-items:center;
     background:var(--headerbgcol);
@@ -82,7 +83,7 @@ header , footer {
     width:100vw;
 }
 
-#about, #americans, #zoom {
+.modalcontainer {
     visibility: hidden;
     position:fixed;
     inset:0;
@@ -100,12 +101,11 @@ header , footer {
     & .modal {
         position: relative;
         width: 90cqw;
-        background: black;
-        padding: 2em 3em;
+        background: var(--whitebg);
         line-height: 1.2em;
         display:flex;
         align-items:flex-start;
-        gap:2em;
+        gap:1em;
         height:80cqh;
         &:before {
             pointer-events:none;
@@ -117,20 +117,13 @@ header , footer {
         }
         & h2 {
             text-transform: capitalize;
-            padding-block: 1em;
+            padding-block: 1.5em 1em;
+            font-size: 2em;
         }
         &>.text {
             max-height:100%;
             overflow:scroll;
-            align-self:center;
-        }
-        & a.modal__close {
-            position: absolute;
-            font-size: 2em;
-            top: 10px;
-            right: 10px;
-            color: white;
-            text-decoration: none;
+            padding-inline: 3em 4em;
         }
         & p {
             text-transform: initial;
@@ -147,6 +140,31 @@ header , footer {
             height:100%;
         }
     }
+}
+a.modal__close {
+    position: absolute;
+    font-size: 1.5em;
+    top: 10px;
+    right: 10px;
+    color: var(--darkerblue);
+    text-decoration: none;
+    background:var(--whitebg);
+    padding:5px;
+}
+.zoommodal {
+    overflow:scroll;
+    width:100%;
+    display:flex;
+    /* justify-content: center; */
+    align-items: flex-start;
+    &>img {
+        max-width: 300vw;
+        max-height:300vh;
+        margin:0 auto;
+    }
+}
+body:has(#zoom:target) {
+  overflow: hidden;
 }
 
 #american {
