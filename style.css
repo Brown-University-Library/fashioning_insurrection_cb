@@ -94,6 +94,9 @@ header , footer {
     opacity:0;
     z-index:990;
     transition: all .4s;
+    &#zoom {
+        align-items:unset;
+    }
     &:target {
         opacity: 1;
         visibility: visible;
@@ -415,24 +418,52 @@ section#item {
             max-height:100%;
             position:absolute;
             object-fit:contain;
-            padding-block-end:var(--labelheight);
+            /* padding-block-end:var(--labelheight); */
+        }
+    }
+    & .nextprev {
+        position: absolute;
+        top: 50%;
+        translate: 0 -50%;
+        font-size: 3em;
+        text-decoration: none;
+        padding: 0.1em 0.15em 0.35em;
+        color:var(--darkerblue);
+        background:var(--whitebg);
+        &#prev {
+            left:0;
+        }
+        &#next {
+            right:0;
         }
     }
     & #itemdescription {
-        position:absolute;
+        /* position:absolute; */
         bottom:0;
         right:0px;
-        width: min(800px,100%);
-        max-height: var(--labelheight);
-        background: rgba(0,0,0,0.7);
+        /* width: min(800px,100%); */
+        /* max-height: var(--labelheight); */
+        background: rgba(255,255,255,0.9);
+        color:black;
         padding: 1em;
         &>summary {
+            cursor:pointer;
+            display:flex;
             &::marker {
                 font-size:1.5em;
+                content:"";
+            }
+            &:before {
+                content:"\2BC8";
+                transition: all 0.2s;
+                align-self:center;
+                font-size: 1.2em;
+                margin-inline-end:0.5em;
             }
             &>h2 {
-                display: inline;
-                margin-inline-end: var(--labelmargin);
+                display: inline-block;
+                /* margin-inline-end: var(--labelmargin); */
+                width:90%;
             }
         }
         &>p {
@@ -441,6 +472,10 @@ section#item {
         }
         &[open] {
             max-height:unset;
+            position:absolute;
+            &>summary:before {
+                rotate:90deg;
+            }
         }
     }
 }

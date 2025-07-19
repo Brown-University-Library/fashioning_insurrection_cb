@@ -32,12 +32,16 @@ item-meta: false
                     {{ page.description }}
                 </p>
             </details>
-            <a href="{{ base }}{{ page.next_item }}">next</a>
-            <a href="{{ base }}{{ page.previous_item }}">previous</a>
-        <div id="zoom" class="modal">
-                <img
-                  src="{{ base }}{{ page.itemimage }}"
-                  alt="{{ page.image_alt_text | default: page.description | default: page.title | escape }}"
-                />
+            <a href="{{ base }}{{ page.previous_item }}" class="nextprev" id="prev">&#8249;</a>
+            <a href="{{ base }}{{ page.next_item }}" class="nextprev" id="next">&#8250;</a>
+        <div class="modalcontainer" id="zoom">
+            <div class="zoommodal">
+                    <img
+                      src="{{ base }}{{ page.itemimage }}"
+                      alt="{{ page.image_alt_text | default: page.description | default: page.title | escape }}"
+                    />
+                    {% include modal_close.html %}
+            </div>
+        </div>
         </section>
     </main>
