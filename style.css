@@ -287,10 +287,11 @@ main.home>nav {
                 opacity:0;
                 text-wrap:balance;
                 transition: all 0.5s;
-                max-width:30em;
                 padding:1em;
                 &>a {
+                    display:inline-block;
                     text-decoration:none;
+                    max-width:80%;
                     &:hover{
                         text-decoration:underline;
                     }
