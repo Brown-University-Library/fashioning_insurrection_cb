@@ -24,16 +24,20 @@ item-meta: false
                   class="img-fluid"
                 >
             </a>
-            <details id="itemdescription">
-                <summary>
-                    <h2>{{ page.title }}</h2>
-                </summary>
-                <p>
-                    {{ page.description }}
-                </p>
-            </details>
-            <a href="{{ base }}{{ page.previous_item }}" class="nextprev" id="prev">&#8249;</a>
-            <a href="{{ base }}{{ page.next_item }}" class="nextprev" id="next">&#8250;</a>
+            <div id="itemdescbox">
+                <details >
+                    <summary>
+                        <h2>{{ page.title }}</h2>
+                    </summary>
+                    <div id="itemdesc">
+                        <p>
+                            {{ page.description }}
+                        </p>
+                    </div>
+                </details>
+            </div>
+            <a href="{{ base }}{{ page.prev_url }}" class="nextprev" id="prev">&#8249;</a>
+            <a href="{{ base }}{{ page.next_url }}" class="nextprev" id="next">&#8250;</a>
         <div class="modalcontainer" id="zoom">
             <div class="zoommodal">
                     <img
