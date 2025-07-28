@@ -7,15 +7,13 @@
 body {
     --whitebg:#eee;
     --linkcolor:#ffdeaa;
-    --activelinkcolor:white;
-    --activelinkbgcolor:black;
-    --accentcolor:#efcb86;
+    --accentcolor:#ca9e58;
     --headerfonts:Eyja, Superclarendon, 'Bookman Old Style', 'URW Bookman', 'URW Bookman L', 'Georgia Pro', Georgia, serif;
-    --archcolor:black;
+    --archcolor: var(--mainbgcol);
     --darkerblue:#072441;
     --lighterseablue:#287ab1;
     --red:#d12229;
-    --mainbgcol: black;
+    --mainbgcol: #020221;
     --footerbgcol:black;
     --headerbgcol: var(--whitebg);
     --headercol: var(--red);
@@ -31,6 +29,10 @@ body {
     flex-flow: column;
     height:100vh;
     align-content:space-between;
+}
+
+p {
+    columns: 24em;
 }
 
 a {
@@ -103,7 +105,6 @@ header , footer {
     }
     & .modal {
         position: relative;
-        width: 90cqw;
         background: var(--whitebg);
         line-height: 1.2em;
         display:flex;
@@ -135,9 +136,6 @@ header , footer {
             & br {
                 margin-block-end: 1em;
             }
-        }
-        & a {
-            position: relative;
         }
         &>img {
             height:100%;
@@ -262,7 +260,7 @@ main.home>nav {
         &>.archbox {
             position: absolute;
             inset:0;
-            background-color:var(--mainbgcol);
+            background-color:var(--archcolor);
             background-position-x: center;
             background-position-y:-1px;
             background-repeat: no-repeat;
@@ -378,7 +376,7 @@ section#case {
     flex-flow: row wrap;
     justify-content: flex-start;
     & a {
-        flex:330px;
+        flex:350px;
         height: 450px;
     }
     & img {
@@ -400,6 +398,7 @@ section#case {
         display:block;
         padding-inline: 1em;
         padding-block:1em;
+        flex-grow:1;
     }
 }
 
