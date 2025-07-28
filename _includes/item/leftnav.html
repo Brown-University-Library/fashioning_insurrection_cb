@@ -2,7 +2,10 @@
         <nav class="leftnav">
             <ul class="sticky">
                 {% for section in site.hierarchy %}
-                {% assign parent = page.url | split: '/' | slice: 0,3 | join: '/' | append: '.html' %}
+                {% assign parent = page.url | split: '/' | slice: 0,3 | join: '/' %}
+                {% unless parent contains ".html" %}
+                    {% assign parent = parent | append: '.html' %}
+                {% endunless %}
                 {% assign filteredsection = section.children | where: 'url', parent %}
                 {% assign splittitle = section.title | split: ' ' %}
                 <li{% if filteredsection.size > 0 %} class="open"{% endif %}>

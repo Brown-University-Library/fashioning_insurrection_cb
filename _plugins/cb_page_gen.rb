@@ -159,16 +159,14 @@ module CollectionBuilderPageGenerator
 
           current_case = cases.select{|cse| String(cse["caseid"])==String(record["caseid"])}[0]
           caseid = String(current_case["caseid"])
-          record["parenturl"] = current_case["url"].split('.')[0]
+          record["parenturl"] = current_case["url"].split('.')[0]+"/"
           if String(next_item["caseid"]) == caseid
-            next_case_url = current_case["url"]
-            record['next_url'] = next_case_url + slugify(next_item[name], mode: "pretty").to_s + ".html"
+            record['next_url'] = record["parenturl"] + slugify(next_item[name], mode: "pretty").to_s + ".html"
           else
             record['next_url'] = cases.select{|cse| String(cse["caseid"])==String(next_item["caseid"])}[0]["url"]
           end
           if String(previous_item["caseid"]) == caseid
-            prev_case_url = current_case["url"]
-            record['prev_url'] = prev_case_url + slugify(previous_item[name], mode: "pretty").to_s + ".html"
+            record['prev_url'] = record["parenturl"] + slugify(previous_item[name], mode: "pretty").to_s + ".html"
           else
             record['prev_url'] = cases.select{|cse| String(cse["caseid"])==String(previous_item["caseid"])}[0]["url"]
           end
