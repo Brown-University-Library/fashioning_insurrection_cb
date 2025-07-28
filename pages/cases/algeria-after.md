@@ -1,7 +1,7 @@
 ---
 title: "Aftermath and Adaptation: Abd el-Kader to the Zouaves and Turcos in Popular Print"
 layout: case
-permalink: /algeria/aftermath-and-adaptation/
+permalink: /algeria/aftermath-and-adaptation.html
 case-id: "4"
 ---
 

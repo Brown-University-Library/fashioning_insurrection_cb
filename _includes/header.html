@@ -10,7 +10,7 @@
     <style>
       @font-face {
         font-family: "Eyja";
-        src: url("{{base}}/fonts/EyjaRegular.woff2") format('woff');
+        src: url("{% unless base == '.' %}{{ base }}/{% endunless %}fonts/EyjaRegular.woff2") format('woff');
       }
     </style>
   </head>

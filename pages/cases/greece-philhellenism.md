@@ -1,7 +1,7 @@
 ---
 title: "Philhellenism: Americans in Support of the Greek Revolution and in Greek Costume"
 layout: case
-permalink: /greece/philhellenism/
+permalink: /greece/philhellenism.html
 case-id: "2"
 ---
 

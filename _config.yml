@@ -84,10 +84,10 @@ hierarchy:
     arch: "data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20200%20999%22%3E%3Cpath%20d%3D%22%20%20%20%20%20%20M-50%20-50%20%20%20%20%20%20H250%20%20%20%20%20%20V2000%20%20%20%20%20%20H190%20%20%20%20%20%20V100%20%20%20%20%20%20q0%20-90%20-90%20-90%20%20%20%20%20%20t-90%2090%20%20%20%20%20%20V2000%20%20%20%20%20%20H-50%20%20%20%20%20%20z%22%2F%3E%3C%2Fsvg%3E"
     children:
       - page: Navigating Characters and Costumes of the Greek War of Independence
-        url: /greece/characters-and-costumes/
+        url: /greece/characters-and-costumes.html
         caseid: 1
       - page: "Philhellenism: Americans in Support of the Greek Revolution and in Greek Costume"
-        url: /greece/philhellenism/
+        url: /greece/philhellenism.html
         caseid: 2
   - title: Early Algerian Resistance
     short-title: Algerian Resistance
@@ -100,13 +100,13 @@ hierarchy:
     arch: "data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22200%22%20height%3D%221000%22%20viewBox%3D%220%200%20200%201000%22%3E%3Cpath%20d%3D%22%20%20M-50%20-50%20%20h400%20%20v1500%20%20H190%20%20V104%20%20l-5%20-5%20%20q30%20-60%20-85%20-90%20%20q-110%2020%20-85%2090%20%20l-5%205%20%20V1500%20%20H-200%20%20z%22%2F%3E%3C%2Fsvg%3E"
     children:
       - page: Costumes and Customs Documented Through Barbary Captivity and Trade Accounts
-        url: /algeria/costumes-and-customs/
+        url: /algeria/costumes-and-customs.html
         caseid: 3
       - page: "Aftermath and Adaptation: Abd el-Kader to the Zouaves and Turcos in Popular Print"
-        url: /algeria/aftermath-and-adaptation/
+        url: /algeria/aftermath-and-adaptation.html
         caseid: 4
       - page: Orientalist Legacies of Algeria in the American Civil War
-        url: /algeria/orientalist-legacies/
+        url: /algeria/orientalist-legacies.html
         caseid: 5
   - short-title: Indian Uprising
     title: Indian Uprising
@@ -119,8 +119,8 @@ hierarchy:
     arch: "data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22200%22%20height%3D%221000%22%20viewBox%3D%220%200%20200%201000%22%3E%3Cpath%20d%3D%22%20%20M-50%20-50%20%20h400%20%20v1500%20%20H190%20%20V94%20%20q0%20-65%20-90%20-85%20%20q-90%2015%20-90%2085%20%20v1500%20%20h-100%20%20z%22%2F%3E%3C%2Fsvg%3E"
     children:
       - page: Resisting the Spread of the British East India Company across the Subcontinent
-        url: /india/resisting-the-spread-of-the-british-east-india-company/
+        url: /india/resisting-the-spread-of-the-british-east-india-company.html
         caseid: 6
       - page: 1857 Uprising in Press and Popular Sentiment
-        url: /india/press-and-popular-sentiment/
+        url: /india/press-and-popular-sentiment.html
         caseid: 7

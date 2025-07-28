@@ -44,6 +44,14 @@ module CollectionBuilderPageGenerator
       # get optional configuration from _config.yml, or create a single default one from CB metadata setting
       configure_gen = site.config['page_gen'] || [{ 'data' => data_file_default }]
 
+      hierarchy = site.config["hierarchy"]
+      cases = []
+      for parent in hierarchy
+        for child in parent["children"]
+          cases.append(child)
+        end
+      end
+
       # iterate over each instance in configuration
       # this allows to generate from multiple _data sources
       configure_gen.each do |data_config|
@@ -132,8 +140,8 @@ module CollectionBuilderPageGenerator
           # create clean filename with Jekyll Slugify pretty mode
           # this ensures safe filenames, but may cause unintended issues with links if objectid are not well formed
           slug = slugify(record[name], mode: "pretty").to_s
-          record["base_filename"] = "index"
-          puts color_text("Notice cb_page_gen: record '#{index}' in '#{data_file}', '#{record[name]}' is being sanitized to create a valid filename. This may cause issues with links generated on other pages. Please check the naming convention used in '#{name}' field.", :yellow) if record['base_filename'] != record[name]
+          record["base_filename"] = slug
+          puts color_text("Notice cb_page_gen: record '#{index}' in '#{data_file}', '#{record[name]}' is being sanitized to create a valid filename. This may cause issues with links generated on other pages. Please check the naming convention used in '#{name}' field.", :yellow) if slug != record[name]
 
           # Provide index number for page object
           record['index_number'] = index 
@@ -149,20 +157,22 @@ module CollectionBuilderPageGenerator
             previous_item = records[index -1]
           end
 
-          hierarchy = site.config['hierarchy']
-          for parent in hierarchy
-            for child in parent["children"]
-              case String(child["caseid"])
-              when String(record["caseid"])
-                record["parenturl"] = child["url"]
-              when String(next_item["caseid"])
-                record['next_item'] = child['url'] + slugify(next_item[name], mode: "pretty").to_s
-              when String(previous_item["caseid"])
-                record['previous_item'] = child['url'] + slugify(previous_item[name], mode: "pretty").to_s
-              end
-            end
+          current_case = cases.select{|cse| String(cse["caseid"])==String(record["caseid"])}[0]
+          caseid = String(current_case["caseid"])
+          record["parenturl"] = current_case["url"].split('.')[0]
+          if String(next_item["caseid"]) == caseid
+            next_case_url = current_case["url"]
+            record['next_url'] = next_case_url + slugify(next_item[name], mode: "pretty").to_s + ".html"
+          else
+            record['next_url'] = cases.select{|cse| String(cse["caseid"])==String(next_item["caseid"])}[0]["url"]
           end
-          dir = record["parenturl"] + slug
+          if String(previous_item["caseid"]) == caseid
+            prev_case_url = current_case["url"]
+            record['prev_url'] = prev_case_url + slugify(previous_item[name], mode: "pretty").to_s + ".html"
+          else
+            record['prev_url'] = cases.select{|cse| String(cse["caseid"])==String(previous_item["caseid"])}[0]["url"]
+          end
+          dir = record["parenturl"]
           record["url"] = dir
 
           if record[display_template]

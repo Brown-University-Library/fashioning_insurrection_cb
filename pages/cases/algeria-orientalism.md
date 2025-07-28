@@ -1,7 +1,7 @@
 ---
 title: Orientalist Legacies of Algeria in the American Civil War
 layout: case
-permalink: /algeria/orientalist-legacies/
+permalink: /algeria/orientalist-legacies.html
 case-id: "5"
 ---
 
