@@ -26,7 +26,17 @@ item-meta: false
         </div>
         {%- assign items = site.data[site.metadata] | where_exp: 'item',"item.objectid and item.caseid==page.case-id" -%}
         {% for item in items %}
-            <a href="{{ base }}{{ page.url | replace: '.html','/' }}{{ item.objectid }}.html"><img src="{{ base }}{{ item.itemimage }}" alt="{{ item.image_alt_text }}"></a>
+           <a href="{{ base }}{{ page.url | replace: '.html','/' }}{{ item.objectid }}.html">
+           <img
+             srcset="
+               {{ base }}/{{ site.item_img_path }}400px/{{ item.itemimage }} 400w,
+               {{ base }}/{{ site.item_img_path }}700px/{{ item.itemimage }} 700w"
+             sizes="
+              (width > 1050px) 45vw,
+              (width < 1050px) 100vw"
+             alt="{{ item.image_alt_text }}"
+           >
+           </a>
         {% endfor %}
         </section>
     </main>

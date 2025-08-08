@@ -1,0 +1,18 @@
+<section class="modalcontainer" id="{{ modaldata.id }}">
+  <div class="modal">
+    {% include modal_close.html %}
+      <img
+        src="{{ base }}/{{ modaldata.img }}"
+        alt="{{ modaldata.imgalt }}"
+      />
+    <div class="text">
+        <h2>{{ modaldata.title }}</h2>
+        <p>{{ modaldata.text | newline_to_br | markdownify }}</p>
+        {% if modaldata.links %}<ul>
+            {% for link in modaldata.links %}<li>
+                <a href="{{ base }}{{ link.url }}">{{ link.text }}</a>
+            </li>{% endfor %}
+        </ul>{% endif %}
+    </div>
+  </div>
+</section>

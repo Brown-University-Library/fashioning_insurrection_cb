@@ -52,12 +52,17 @@ module CollectionBuilderPageGenerator
         end
       end
 
+      base_img_path = site.config["item_img_path"]
+      if base_img_path[-1] != "/"
+        base_img_path += "/"
+      end
+
       # iterate over each instance in configuration
       # this allows to generate from multiple _data sources
       configure_gen.each do |data_config|
         data_file = data_config['data'] || data_file_default
         template_location = data_config['template_location'] || template_location_default
-        template = template_location + (data_config['template'] || template_default)
+        template = template_default
         display_template = data_config['display_template'] || display_template_default
         name = data_config['name'] || name_default
         dir = data_config['dir'] || dir_default
@@ -172,6 +177,11 @@ module CollectionBuilderPageGenerator
           end
           dir = record["parenturl"]
           record["url"] = dir
+
+          record["srcset"] = ""
+          for size in site.config["img_sizes"]
+            record["srcset"] += "#{base_img_path}#{size}px/#{record['itemimage']} #{size}w,"
+          end
 
           if record[display_template]
             record['layout'] = template_location + record[display_template].strip

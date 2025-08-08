@@ -2,6 +2,6 @@
 layout: index
 title: Home
 disablecasenav: True
-permalink: /
+permalink: /index.html
 ---
 

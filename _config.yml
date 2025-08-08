@@ -20,7 +20,7 @@ source-code: https://github.com/CollectionBuilder/collectionbuilder-csv
 # title of site appears in banner
 title: Fashioning Insurrection
 # tagline, a short phrase that will appear throughout the site in the top banner
-tagline: Costumes of a world in revolution.
+tagline: From Imperial Resistance To American Orientalisms
 # description appears in meta tags and other locations
 # this description might appear in search result lists, keep around 160 characters max
 description: "CollectionBuilder-CSV is a template for creating digital collection exhibits using static web technology."
@@ -71,6 +71,14 @@ exclude: [docs/, Rakefile, rakelib/, README.md, LICENSE, CITATION.cff, CODE_OF_C
 # compress CSS output
 sass:
   style: compressed
+
+item_img_path: img/object_images/
+img_sizes:
+  - 400
+  - 700
+  - 1000
+  - 2000
+  - 3000
 
 hierarchy:
   - short-title: Greek War

@@ -1,25 +1,35 @@
 {%- include baseurl.html -%}
-        <nav class="leftnav">
-            <ul class="sticky">
+{% capture navlist %}
                 {% for section in site.hierarchy %}
                 {% assign parent = page.url | split: '/' | slice: 0,3 | join: '/' %}
+                {% assign parenttitle = page.title %}
                 {% unless parent contains ".html" %}
                     {% assign parent = parent | append: '.html' %}
                 {% endunless %}
                 {% assign filteredsection = section.children | where: 'url', parent %}
                 {% assign splittitle = section.title | split: ' ' %}
-                <li{% if filteredsection.size > 0 %} class="open"{% endif %}>
+                {% assign currentsection = filteredsection.size > 0 %}
+                {% if currentsection %}{% assign sectionname = section.title %}{% endif %}
+                <li{% if currentsection %} class="open"{% endif %}>
                     <div style="background-color: {{ section.color }}" tabindex=0>{{ section.title }}</div>
                     <ul style="background-color: {{ section.color }}">
                         {% for case in section.children %}
                         {% assign fullurl = parent %}
-                        <li{% if case.url == fullurl %} style="background-color:{{ section.dkcolor }};"{% endif %}>
+                        <li{% if case.url == fullurl %}{% assign casename = case.page %} style="background-color:{{ section.dkcolor }};"{% endif %}>
                             <a href="{{ base }}{{ case.url }}"{% if case.url == fullurl %} class="active"{% endif %}>{{ case.page }}</a>
                         </li>
                         {% endfor %}
                     </ul>
                 </li>
                 {% endfor %}
+{% endcapture %}
+        <div id="breadcrumb">
+            <a href="#nav" id="shownavbutton">Open Navigation</a>
+        </div>
+        <nav id="nav" class="leftnav">
+            {% include modal_close.html %}
+            <ul class="sticky">
+                {{ navlist }}
             </ul>
         </nav>
         <script>

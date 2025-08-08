@@ -7,6 +7,7 @@ item-meta: false
 ---
     <main>
         {% include item/leftnav.html %}
+        {% include imgsrcset.html %}
         {% for section in site.hierarchy %}
             {% for case in section.children %}
                 {% assign parentcase = page.caseid | string | strip %}
@@ -19,7 +20,8 @@ item-meta: false
         <section id="item" style="background-color:{{ bg }}">
             <a href="#zoom" class="imgwrapper">
                 <img
-                  src="{{ base }}{{ page.itemimage }}"
+                  srcset="{{ srcset }}"
+                  sizes="50vw"
                   alt="{{ page.image_alt_text | default: page.description | default: page.title | escape }}"
                   class="img-fluid"
                 >
@@ -31,6 +33,10 @@ item-meta: false
                     </summary>
                     <div id="itemdesc">
                         <p>
+                            {{ page.attr | newline_to_br }}
+                        </p>
+                        <br>
+                        <p>
                             {{ page.description }}
                         </p>
                     </div>
@@ -41,10 +47,23 @@ item-meta: false
         <div class="modalcontainer" id="zoom">
             <div class="zoommodal">
                     <img
-                      src="{{ base }}{{ page.itemimage }}"
+                      srcset="{{ srcset }}"
+                      sizes="200vw"
+                      loading="lazy"
                       alt="{{ page.image_alt_text | default: page.description | default: page.title | escape }}"
                     />
-                    {% include modal_close.html %}
+                    <div id="zoomlinkbox">
+                        <a href="" style="background: var(--whitebg);
+                            color: var(--darkerblue);
+                            font-family: var(--headerfonts);
+                            padding: 5px;
+                            text-decoration: none;
+                            border-radius: 0.4em;
+                            font-size: 0.8em;
+                            margin-inline-end: 0.5em;"
+                        >View original</a>
+                        {% include modal_close.html %}
+                    </div>
             </div>
         </div>
         </section>

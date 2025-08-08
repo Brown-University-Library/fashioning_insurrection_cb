@@ -1,0 +1,7 @@
+{% include baseurl.html %}
+{% assign srcset = '' %}
+{% capture srcset %}
+{% for size in site.img_sizes %}
+{{base}}/{{site.item_img_path}}{{size}}px/{{page.itemimage}} {{size}}w, 
+{% endfor %}
+{% endcapture %}
