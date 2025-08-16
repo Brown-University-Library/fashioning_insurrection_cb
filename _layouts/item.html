@@ -7,6 +7,7 @@ item-meta: false
 ---
     <main>
         {% include item/leftnav.html %}
+        {% assign srcsetimg = page.itemimage %}
         {% include imgsrcset.html %}
         {% for section in site.hierarchy %}
             {% for case in section.children %}
@@ -18,18 +19,49 @@ item-meta: false
             {% endfor %}
         {% endfor %}
         <section id="item" style="background-color:{{ bg }}">
-            <a href="#zoom" class="imgwrapper">
-                <img
-                  srcset="{{ srcset }}"
-                  sizes="50vw"
-                  alt="{{ page.image_alt_text | default: page.description | default: page.title | escape }}"
-                  class="img-fluid"
-                >
-            </a>
+            <div class="imgbox">
+                <div class="imgwrapper"> 
+                <a href="#zoom" >
+                    <img
+                      srcset="{{ srcset }}"
+                      sizes="(width > 900px) 70vw, (width <= 900px) 100vw"
+                      alt="{{ page.image_alt_text | default: page.description | default: page.title | escape }}"
+                      class="img-fluid"
+                    />
+                </a>
+                  {% if page.hotspots %}
+                    {% assign hotspots = page.hotspots | split: "|" %}
+                    {% for fullhotspot in hotspots %}
+                      {% assign hotspot = fullhotspot | split: ':' %}
+                      {% assign coords = hotspot | first | split: ',' %}
+                      {% assign top = coords | first %}
+                      {% assign left = coords | last %}
+                      {% assign img = hotspot[1] %}
+                      {% assign anchor = hotspot[2] %}
+                      <a
+                        href="#{{ anchor }}"
+                        class="hotspot"
+                        style="top:{{ top }}; left:{{ left }};"
+                      >
+                        <div></div>
+                      </a>
+                      {% assign zoommodalimg = img %}
+                      {% assign zoommodalid = anchor %}
+                      {% include zoommodal.html %}
+                    {% endfor %}
+                  {% endif %}
+                </div>
+            </div>
             <div id="itemdescbox">
                 <details >
                     <summary>
-                        <h2>{{ page.title }}</h2>
+                        <h2>{{ page.title }}
+                        {% if page.orig_link %} <a
+                          href="{{ page.orig_link }}"
+                          id="#topleveloriglink"
+                          target="_blank"
+                        >View original record</a>{% endif %}
+                        </h2>
                     </summary>
                     <div id="itemdesc">
                         <p>
@@ -44,27 +76,14 @@ item-meta: false
             </div>
             <a href="{{ base }}{{ page.prev_url }}" class="nextprev" id="prev">&#8249;</a>
             <a href="{{ base }}{{ page.next_url }}" class="nextprev" id="next">&#8250;</a>
-        <div class="modalcontainer" id="zoom">
-            <div class="zoommodal">
-                    <img
-                      srcset="{{ srcset }}"
-                      sizes="200vw"
-                      loading="lazy"
-                      alt="{{ page.image_alt_text | default: page.description | default: page.title | escape }}"
-                    />
-                    <div id="zoomlinkbox">
-                        <a href="" style="background: var(--whitebg);
-                            color: var(--darkerblue);
-                            font-family: var(--headerfonts);
-                            padding: 5px;
-                            text-decoration: none;
-                            border-radius: 0.4em;
-                            font-size: 0.8em;
-                            margin-inline-end: 0.5em;"
-                        >View original</a>
-                        {% include modal_close.html %}
-                    </div>
-            </div>
-        </div>
+            {% capture zoommodallinks %}
+                {% if page.orig_link %}
+                        <a href="{{ page.orig_link }}" class="original_link" target="_blank"
+                        >View original record</a>
+                {% endif %}
+            {% endcapture %}
+            {% assign zoommodalimg = page.itemimage %}
+            {% assign zoommodalid = "zoom" %}
+            {% include zoommodal.html %}
         </section>
     </main>

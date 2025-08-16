@@ -10,6 +10,7 @@ body {
     --darklinkcolor: #6f5311;
     --accentcolor:#ca9e58;
     --headerfonts:Eyja, Superclarendon, 'Bookman Old Style', 'URW Bookman', 'URW Bookman L', 'Georgia Pro', Georgia, serif;
+    --bodyfonts:"freight-sans-pro", Inter, Roboto, 'Helvetica Neue', 'Arial Nova', 'Nimbus Sans', Arial, sans-serif;
     --archcolor: var(--mainbgcol);
     --darkerblue:#072441;
     --lighterseablue:#287ab1;
@@ -23,7 +24,7 @@ body {
     --colwidth: 24em;
     background: var(--mainbgcol);
     color: white;
-    font-family: "freight-sans-pro", Inter, Roboto, 'Helvetica Neue', 'Arial Nova', 'Nimbus Sans', Arial, sans-serif;
+    font-family: var(--bodyfonts);
     font-size: 1rem;
     line-height:1.3rem;
     box-sizing:border-box;
@@ -213,14 +214,13 @@ a.modal__close {
 }
 #zoomlinkbox {
     position: absolute;
-    font-size: 1.5rem;
     top: 0;
     padding: 15px;
     width: 100%;
     justify-content: space-between;
     display: flex;
     .modal__close {
-        font-size: unset;
+        font-size: 1.7em;
     }
 }
 
@@ -429,6 +429,7 @@ main {
     display: flex;
     flex-direction:row;
     flex: 1;
+    position: relative;
 }
 
 section#case {
@@ -536,6 +537,8 @@ section#item {
             &>summary {
                 cursor:pointer;
                 display:flex;
+                gap:1em;
+                align-items:center;
                 &::marker {
                     font-size:1.5rem;
                     content:"";
@@ -546,15 +549,27 @@ section#item {
                     align-self:flex-start;
                     font-size: 1.2rem;
                     translate: 0 4px;
-                    margin-inline-end:0.6em;
                     border: 0.5em solid transparent;
                     border-left: 0.8em solid black;
                     border-right: none;
                 }
                 &>h2 {
-                    display: inline-block;
+                    display: flex;
                     /* margin-inline-end: var(--labelmargin); */
-                    width:90%;
+                    max-width:calc(100% - 120px);
+                    flex: 1;
+                    justify-content:space-between;
+                    align-items:center;
+                    &>*{
+                        vertical-align:middle;
+                    }
+                    &>a{
+                        font-style: italic;
+                        text-wrap: nowrap;
+                        font-weight: 200;
+                        font-size: 1rem;
+                        margin-inline-start: 1em;
+                    }
                 }
             }
             &>#itemdesc {
@@ -575,8 +590,6 @@ section#item {
                     line-height:1em;
                 }
                 &>p:last-child {
-                    border-block-start: 1px solid black;
-                    padding-block-start: 1em;
                     flex: 30em 1;
                 }
                 & br {
@@ -586,6 +599,22 @@ section#item {
                 }
             }
         }
+    }
+}
+.original_link {
+    background: var(--whitebg);
+    color: var(--darkerblue);
+    font-family: var(--headerfonts);
+    padding: 5px;
+    text-decoration: none;
+    border-radius: 0.4em;
+    font-size: 1.2em;
+    margin-inline-end: 0.5em;
+}
+@media screen and (width < 1265px) {
+    #itemdesc>p:last-child {
+        border-block-start: 1px solid black;
+        padding-block-start: 1em;
     }
 }
 #itemdescbox:has(details[open]) {
