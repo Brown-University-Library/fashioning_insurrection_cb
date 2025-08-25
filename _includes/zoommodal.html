@@ -1,0 +1,28 @@
+{% assign srcsetimg = zoommodalimg %}
+{% include imgsrcset.html %}
+{% if zoommodalextra == true %}
+    {% assign zoombasis = 3 %}
+{% else %}
+    {% assign zoombasis = 1 %}
+{% endif %}
+        <div class="modalcontainer" id="{{ zoommodalid }}">
+            <div class="{% if zoommodalextra == true %}extrazoom {% endif %}zoommodal">
+                <picture>
+                    {% assign sizes = site.img_sizes | reverse %}
+                    {% for size in sizes %}
+                    {% capture srcset %}{{base}}/{{site.item_img_path}}{{size}}px/{{ srcsetimg }}{% endcapture %}
+                    {% if forloop.last == false %}
+                    {% assign sizeindex = forloop.index | minus: zoommodalextra %}
+                    <source
+                      media="(min-width:{{ sizes[sizeindex] | divided_by: zoombasis | str}}px)"
+                      srcset="{{ srcset }}"
+                    >{% else %}
+                    <img src="{{ srcset }}" alt="{{ page.image_alt_text | default: page.description | default: page.title | escape }}">{% endif %}
+                    {% endfor %}
+                </picture>
+                <div id="zoomlinkbox">
+                    {% for link in zoommodallinks %}{{ link }}{%endfor%}
+                    {% include modal_close.html %}
+                </div>
+            </div>
+        </div>
