@@ -28,6 +28,7 @@ description: "CollectionBuilder-CSV is a template for creating digital collectio
 keywords: fashion; insurrection; brown university; brown university library; revolution
 # creator of the digital collection, to appear in meta tags; we typically use our GitHub usernames but feel free to just use your name
 author: Brown University Library
+footertext: Created at Brown University Library, Summer 2025
 
 ##########
 # COLLECTION SETTINGS

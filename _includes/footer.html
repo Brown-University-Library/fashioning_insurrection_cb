@@ -1,10 +1,12 @@
     <footer>
+        {% if site.data.cornermodal %}
         {% assign modaldata=site.data.cornermodal %}
         {% include modal.html %}
         <a id="cornermodallink" href="#{{ modaldata.id }}">
-            <img src="{{ base }}{{ '/img/americanvoyeur.gif' }}"/>i
+            <img src="{{ base }}/{{ modaldata.linkimg }}" alt="{{ modaldata.linkimgalt }}" />
         </a>
-        <p>copyright 2025 testing testers llc</p>
+        {% endif %}
+        <p>{{ site.footertext }}</p>
     </footer>
 </body>
 </html>
