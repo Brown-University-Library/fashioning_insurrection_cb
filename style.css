@@ -516,6 +516,11 @@ section#case {
     }
 }
 
+.hotbox {
+    position: absolute;
+    cursor:zoom-in;
+}
+
 section#item {
     display: flex;
     flex-flow: column;

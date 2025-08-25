@@ -29,6 +29,31 @@ item-meta: false
                       class="img-fluid"
                     />
                 </a>
+                  {% if page.boxes %}
+                    {% assign boxes = page.boxes | split: "|" %}
+                    {% for boxstring in boxes %}
+                      {% assign box = boxstring | split: ':' %}
+                      {% assign coords = box | first | split: ',' %}
+                      {% assign top = coords | first %}
+                      {% assign left = coords[1] %}
+                      {% assign bottomnum = coords[2] | remove: "%" %}
+                      {% assign bottom = 100 | minus: bottomnum | append: "%" %}
+                      {% assign rightnum = coords[3] | remove: "%"%}
+                      {% assign right = 100 | minus: rightnum | append: "%" %}
+                      {% assign img = box[1] %}
+                      {% assign anchor = box[2] %}
+                      <a
+                        href="#{{ anchor }}"
+                        class="hotbox"
+                        style="top:{{ top }}; left:{{ left }}; bottom:{{ bottom }}; right:{{ right }};"
+                      >
+                        <div></div>
+                      </a>
+                      {% assign zoommodalimg = img %}
+                      {% assign zoommodalid = anchor %}
+                      {% include zoommodal.html %}
+                    {% endfor %}
+                  {% endif %}
                   {% if page.hotspots %}
                     {% assign hotspots = page.hotspots | split: "|" %}
                     {% for fullhotspot in hotspots %}
@@ -84,6 +109,7 @@ item-meta: false
             {% endcapture %}
             {% assign zoommodalimg = page.itemimage %}
             {% assign zoommodalid = "zoom" %}
+            {% if page.extra_zoom %}{% assign zoommodalextra = true %}{% else %}{% assign zoommodalextra = false %}{% endif %}
             {% include zoommodal.html %}
         </section>
     </main>
