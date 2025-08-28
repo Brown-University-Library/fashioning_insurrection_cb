@@ -168,12 +168,12 @@ module CollectionBuilderPageGenerator
           if String(next_item["caseid"]) == caseid
             record['next_url'] = record["parenturl"] + slugify(next_item[name], mode: "pretty").to_s + ".html"
           else
-            record['next_url'] = cases.select{|cse| String(cse["caseid"])==String(next_item["caseid"])}[0]["url"]
+            record['next_url'] = current_case["url"]
           end
           if String(previous_item["caseid"]) == caseid
             record['prev_url'] = record["parenturl"] + slugify(previous_item[name], mode: "pretty").to_s + ".html"
           else
-            record['prev_url'] = cases.select{|cse| String(cse["caseid"])==String(previous_item["caseid"])}[0]["url"]
+            record['prev_url'] = current_case["url"]
           end
           dir = record["parenturl"]
           record["url"] = dir

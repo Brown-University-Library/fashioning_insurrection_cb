@@ -11,10 +11,11 @@ item-meta: false
         {% include imgsrcset.html %}
         {% for section in site.hierarchy %}
             {% for case in section.children %}
-                {% assign parentcase = page.caseid | string | strip %}
+                {% assign parentcaseid = page.caseid | string | strip %}
                 {% assign caseid = case.caseid | string | strip %}
-                {% if parentcase == caseid %}
+                {% if parentcaseid == caseid %}
                     {% assign bg = section.dkcolor %}
+                    {% assign parentcase = case %}
                 {% endif %}
             {% endfor %}
         {% endfor %}
@@ -80,13 +81,13 @@ item-meta: false
             <div id="itemdescbox">
                 <details >
                     <summary>
-                        <h2>{{ page.title }}
+                        <span><h2>{{ page.title }}</h2>
                         {% if page.orig_link %} <a
                           href="{{ page.orig_link }}"
                           id="#topleveloriglink"
                           target="_blank"
                         >View original record</a>{% endif %}
-                        </h2>
+                        </span>
                     </summary>
                     <div id="itemdesc">
                         <p>
@@ -99,8 +100,13 @@ item-meta: false
                     </div>
                 </details>
             </div>
-            <a href="{{ base }}{{ page.prev_url }}" class="nextprev" id="prev">&#8249;</a>
-            <a href="{{ base }}{{ page.next_url }}" class="nextprev" id="next">&#8250;</a>
+            {% assign returnicon = "⮌" %}
+            {% assign previcon = "＜" %}
+            {% assign nexticon = "＞" %}
+            {% if page.prev_url == parentcase.url %}{% assign previcon = returnicon %}{% endif %}
+            {% if page.next_url == parentcase.url %}{% assign nexticon = returnicon %}{% endif %}
+            <a href="{{ base }}{{ page.prev_url }}" class="nextprev" id="prev">{{ previcon }}</a>
+            <a href="{{ base }}{{ page.next_url }}" class="nextprev" id="next">{{ nexticon }}</a>
             {% capture zoommodallinks %}
                 {% if page.orig_link %}
                         <a href="{{ page.orig_link }}" class="original_link" target="_blank"
